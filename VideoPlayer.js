@@ -33,7 +33,7 @@ export default class VideoPlayer extends Component {
             volume: this.props.volume || 1,
             rate: this.props.rate || 1,
             // Controls
-            
+
             isFullscreen: this.props.resizeMode === 'cover' || false,
             showTimeRemaining: true,
             volumeTrackWidth: 0,
@@ -487,7 +487,7 @@ export default class VideoPlayer extends Component {
 
         state.seekerFillWidth = position;
         state.seekerPosition = position;
-        
+
         if ( ! state.seeking ) {
             state.seekerOffset = position
         };
@@ -805,6 +805,7 @@ export default class VideoPlayer extends Component {
 
         const backControl = !this.props.disableBack ? this.renderBack() : this.renderNullControl();
         const volumeControl = !this.props.disableVolume ? this.renderVolume() : this.renderNullControl();
+        const muteVolume = !this.props.disableMuteVolume ? this.renderMuteVolume() : null;
         const fullscreenControl = !this.props.disableFullscreen ? this.renderFullscreen() : this.renderNullControl();
 
         return(
@@ -823,6 +824,7 @@ export default class VideoPlayer extends Component {
                         { backControl }
                         <View style={ styles.controls.pullRight }>
                             { volumeControl }
+                            { muteVolume }
                             { fullscreenControl }
                         </View>
                     </View>
@@ -872,6 +874,32 @@ export default class VideoPlayer extends Component {
                 </View>
             </View>
         );
+    }
+
+    renderMuteVolume() {
+      const onPress = ()=>{this.setState({muted:!this.state.muted})}
+      if (this.state.muted){
+        return (
+          <View>
+            <Image style={ [styles.volume.icon] } source={ require( './assets/img/volume.png' ) } />
+            <View style={{
+              position: 'absolute',
+              right: 0,
+              top: '50%',
+              backgroundColor: 'white',
+              width: '100%',
+              height: 2,
+              transform: [
+                {rotate: '-45deg'}
+              ]
+            }}></View>
+          </View>
+        );
+      }else{
+        return (
+          <Image style={ styles.volume.icon } source={ require( './assets/img/volume.png' ) } />
+        );
+      }
     }
 
     /**
@@ -1013,7 +1041,7 @@ export default class VideoPlayer extends Component {
      * Renders an empty control, used to disable a control without breaking the view layout.
      */
     renderNullControl() {
-        return this.renderControl(<View></View>);   
+        return this.renderControl(<View></View>);
     }
 
 
