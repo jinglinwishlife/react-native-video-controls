@@ -824,8 +824,8 @@ export default class VideoPlayer extends Component {
                         { backControl }
                         <View style={ styles.controls.pullRight }>
                             { volumeControl }
-                            { muteVolume }
                             { fullscreenControl }
+                            { muteVolume }
                         </View>
                     </View>
                 </ImageBackground>
