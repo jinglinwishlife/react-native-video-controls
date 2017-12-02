@@ -1223,7 +1223,7 @@ const styles = {
             justifyContent: 'space-between',
             flexDirection: 'row',
             width: null,
-            margin: 12,
+            margin: 30,
             marginBottom: 18,
         },
         bottomControlGroup: {
