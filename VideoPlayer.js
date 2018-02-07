@@ -785,7 +785,7 @@ export default class VideoPlayer extends Component {
                 activeOpacity={ 0.3 }
                 onPress={()=>{
                     this.resetControlTimeout();
-                    callback && callback();
+                    callback();
                 }}
                 style={[
                     styles.controls.control,
@@ -833,8 +833,8 @@ export default class VideoPlayer extends Component {
                         { backControl }
                         <View style={ styles.controls.pullRight }>
                             { volumeControl }
-                            { fullscreenControl }
                             { muteVolume }
+                            { fullscreenControl }
                         </View>
                     </View>
                 </ImageBackground>
@@ -888,27 +888,25 @@ export default class VideoPlayer extends Component {
     renderMuteVolume() {
       const onPress = ()=>{this.setState({muted:!this.state.muted})}
       if (this.state.muted){
-        return this.renderControl(
-          <View style={{justifyContent:'center', alignItems:'center'}}>
+        return (
+          <View>
             <Image style={ [styles.volume.icon] } source={ require( './assets/img/volume.png' ) } />
             <View style={{
               position: 'absolute',
-              left: -4,
+              right: 0,
               top: '50%',
               backgroundColor: 'white',
-              width: '200%',
+              width: '100%',
               height: 2,
               transform: [
                 {rotate: '-45deg'}
               ]
             }}></View>
-          </View>,
-          onPress
+          </View>
         );
       }else{
-        return this.renderControl(
-            <Image style={ styles.volume.icon } source={ require( './assets/img/volume.png' ) } />,
-            onPress
+        return (
+          <Image style={ styles.volume.icon } source={ require( './assets/img/volume.png' ) } />
         );
       }
     }
@@ -1049,8 +1047,6 @@ export default class VideoPlayer extends Component {
     }
 
     /**
-<<<<<<< 4f8b0132b3301eac4ae3e3496fce45c87ef50e1d
-=======
      * Renders an empty control, used to disable a control without breaking the view layout.
      */
     renderNullControl() {
@@ -1059,7 +1055,6 @@ export default class VideoPlayer extends Component {
 
 
     /**
->>>>>>> added mute volume btn
      * Show loading icon
      */
     renderLoader() {
@@ -1235,7 +1230,7 @@ const styles = {
             justifyContent: 'space-between',
             flexDirection: 'row',
             width: null,
-            margin: 30,
+            margin: 12,
             marginBottom: 18,
         },
         bottomControlGroup: {
