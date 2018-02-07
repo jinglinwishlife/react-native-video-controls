@@ -785,7 +785,7 @@ export default class VideoPlayer extends Component {
                 activeOpacity={ 0.3 }
                 onPress={()=>{
                     this.resetControlTimeout();
-                    callback();
+                    callback && callback();
                 }}
                 style={[
                     styles.controls.control,
@@ -835,6 +835,7 @@ export default class VideoPlayer extends Component {
                             { volumeControl }
                             { muteVolume }
                             { fullscreenControl }
+                            { muteVolume }
                         </View>
                     </View>
                 </ImageBackground>
@@ -888,25 +889,27 @@ export default class VideoPlayer extends Component {
     renderMuteVolume() {
       const onPress = ()=>{this.setState({muted:!this.state.muted})}
       if (this.state.muted){
-        return (
-          <View>
+        return this.renderControl(
+          <View style={{justifyContent:'center', alignItems:'center'}}>
             <Image style={ [styles.volume.icon] } source={ require( './assets/img/volume.png' ) } />
             <View style={{
               position: 'absolute',
-              right: 0,
+              left: -4,
               top: '50%',
               backgroundColor: 'white',
-              width: '100%',
+              width: '200%',
               height: 2,
               transform: [
                 {rotate: '-45deg'}
               ]
             }}></View>
-          </View>
+          </View>,
+          onPress
         );
       }else{
-        return (
-          <Image style={ styles.volume.icon } source={ require( './assets/img/volume.png' ) } />
+        return this.renderControl(
+            <Image style={ styles.volume.icon } source={ require( './assets/img/volume.png' ) } />,
+            onPress
         );
       }
     }
@@ -1230,7 +1233,7 @@ const styles = {
             justifyContent: 'space-between',
             flexDirection: 'row',
             width: null,
-            margin: 12,
+            margin: 30,
             marginBottom: 18,
         },
         bottomControlGroup: {
