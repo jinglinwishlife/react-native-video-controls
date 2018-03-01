@@ -831,9 +831,10 @@ export default class VideoPlayer extends Component {
                     imageStyle={[ styles.controls.vignette ]}>
                     <View style={ styles.controls.topControlGroup }>
                         { backControl }
+                        <Text style={{color:'white', textAlign:'center', alignSelf:'center', width:'80%', overflow:'visible', backgroundColor:'transparent'}}>{this.props.videoTitle}</Text>
                         <View style={ styles.controls.pullRight }>
-                            { volumeControl }
-                            { fullscreenControl }
+                            {/* { volumeControl }
+                            { fullscreenControl } */}
                             { muteVolume }
                         </View>
                     </View>
