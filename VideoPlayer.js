@@ -286,6 +286,7 @@ export default class VideoPlayer extends Component {
      * Default is 15s
      */
     setControlTimeout() {
+        if (this.props.disableTimeout) return;
         this.player.controlTimeout = setTimeout( ()=> {
             this._hideControls();
         }, this.player.controlTimeoutDelay );
