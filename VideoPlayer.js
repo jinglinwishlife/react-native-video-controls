@@ -1227,6 +1227,7 @@ const styles = {
         back: {
             width: 20,
             height: 30,
+            transform: [{ translateX: -10 }, { translateY: -0.5 }]
         },
         row: {
             flexDirection: 'row',
