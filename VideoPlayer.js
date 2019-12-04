@@ -1222,6 +1222,10 @@ const styles = {
         },
     }),
     controls: StyleSheet.create({
+        back: {
+            width: 20,
+            height: 30,
+        },
         row: {
             flexDirection: 'row',
             alignItems: 'center',
