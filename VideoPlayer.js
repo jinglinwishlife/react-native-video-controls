@@ -262,6 +262,8 @@ export default class VideoPlayer extends Component {
         state.lastScreenPress = time;
 
         this.setState( state );
+
+        this.props.onPressVideo && this.props.onPressVideo();
     }
 
 
