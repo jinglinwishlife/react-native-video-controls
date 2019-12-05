@@ -1048,7 +1048,7 @@ export default class VideoPlayer extends Component {
 
         let source = this.state.paused === true ? require( './assets/img/play.png' ) : require( './assets/img/pause.png' );
         return this.renderControl(
-            <Image source={ source } />,
+            <Image source={source} style={{ width: 18, height: 28 }} />,
             this.methods.togglePlayPause,
             styles.controls.playPause
         );
