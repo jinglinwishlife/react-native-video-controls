@@ -1372,16 +1372,17 @@ const styles = {
         },
         handle: {
             position: 'absolute',
-            marginLeft: -7,
-            height: 28,
-            width: 28,
+            marginTop: -10,
+            marginLeft: -25,
+            height: 50,
+            width: 50,
         },
         circle: {
-            borderRadius: 12,
+            borderRadius: 18,
             position: 'relative',
-            top: 8, left: 8,
-            height: 12,
-            width: 12,
+            top: 16, left: 15,
+            height: 18,
+            width: 18,
         },
     })
 };
